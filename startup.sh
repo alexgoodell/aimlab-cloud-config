@@ -1,7 +1,5 @@
 #!/bin/bash
-curl -L https://tljh.jupyter.org/bootstrap.py \
-  | sudo python3 - \
-    --admin <admin-user-name>
+curl -L https://tljh.jupyter.org/bootstrap.py | sudo python3 --admin admin
     
 # basics
 sudo apt update 

@@ -50,6 +50,7 @@ echo "DONE WITH CONFIGURATION"
 # hub python (used for managing web app) is located at /opt/tljh/hub/bin/python
 # user python (default environment for user) is at /opt/tljh/user/bin/python
 
+/opt/tljh/user/bin/python -m pip install --upgrade pip
 /opt/tljh/user/bin/python -m pip install pandas
 /opt/tljh/user/bin/python -m pip install matplotlib
 

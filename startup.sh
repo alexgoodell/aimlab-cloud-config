@@ -6,6 +6,9 @@ curl -L https://tljh.jupyter.org/bootstrap.py \
 # basics
 sudo apt update 
 sudo apt install -y git make wget curl bison vim fish ncdu rsync bmon slurm tcptrack pipx
+# gcloud dependencies
+sudo apt-get install apt-transport-https ca-certificates gnupg curl
+
 # gh
 sudo snap install gh
 
@@ -39,13 +42,10 @@ echo "DONE WITH CONFIGURATION"
 # we will set up virtual environments in /srv/venvs using conda
 # install conda to the system environment (to avoid messing with user or hub env)
 
-#sudo useradd -r --create-home -G adm,google-sudoers setup
-#sudo su setup
-#cd /home/setup
-
 # install miniconda to /home/setup/miniconda3
 #sudo wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /home/setup/miniconda.sh
 #bash /home/setup/miniconda.sh -b -p /home/setup/miniconda
+
 
 # Python locations
 # system python (used for installation) is located at /bin/python3
@@ -55,6 +55,16 @@ echo "DONE WITH CONFIGURATION"
 /opt/tljh/user/bin/python -m pip install pandas
 /opt/tljh/user/bin/python -m pip install matplotlib
 
+echo "------------ Creating setup user -------------"
+sudo useradd -r --create-home -G adm,google-sudoers setup
+sudo su setup
+cd /home/setup
+
+echo "------------ Downloading GCP -------------"
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg -y --dearmor -o /usr/share/keyrings/cloud.google.gpg
+echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+sudo apt-get update && sudo apt-get install google-cloud-cli
+gcloud init
 
 # now you have /home/setup/miniconda3/bin/conda
 # and

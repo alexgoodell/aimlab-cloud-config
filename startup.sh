@@ -4,8 +4,6 @@ curl -L https://tljh.jupyter.org/bootstrap.py | sudo python3 --admin admin
 # basics
 sudo apt update 
 sudo apt install -y git make wget curl bison vim fish ncdu rsync bmon slurm tcptrack pipx
-# gcloud dependencies
-sudo apt-get install apt-transport-https ca-certificates gnupg curl
 
 # gh
 sudo snap install gh
@@ -61,11 +59,6 @@ sudo useradd -r --create-home -G adm,google-sudoers setup
 sudo su setup
 cd /home/setup
 
-echo "------------ Downloading GCP -------------"
-curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg -y --dearmor -o /usr/share/keyrings/cloud.google.gpg
-echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-sudo apt-get update && sudo apt-get install google-cloud-cli
-gcloud init
 
 # now you have /home/setup/miniconda3/bin/conda
 # and

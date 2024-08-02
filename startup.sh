@@ -25,7 +25,6 @@ sudo wget https://gist.githubusercontent.com/alexgoodell/2e76a0ae2bfb25dccf63aa0
 #sudo tljh-config reload
 
 # sudo usermod -a -G adm,google-sudoers jupyter-agoodell
-sudo tljh-config add-item users.admin agoodell
 sudo tljh-config add-item users.admin jupyter-jason959
 sudo tljh-config add-item users.admin jupyter-agoodell
 sudo tljh-config add-item users.admin jupyter-lchu

@@ -3,7 +3,7 @@ curl -L https://tljh.jupyter.org/bootstrap.py | sudo python3 --admin admin
     
 # basics
 sudo apt update 
-sudo apt install -y git make wget curl bison vim fish ncdu rsync bmon slurm tcptrack pipx
+sudo apt install -y git make wget curl bison vim fish ncdu rsync bmon slurm tcptrack pipx nfs-common
 
 # gh
 sudo snap install gh
